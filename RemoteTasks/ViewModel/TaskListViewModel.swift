@@ -14,6 +14,7 @@ final class TaskListViewModel: ObservableObject {
     @Published var tasks: [Task] = []
     @Published var isLoading = false
     @Published var errorMessage: String?
+    @Published var showAlert: Bool = false
     
     private let service = TaskService()
     
@@ -24,6 +25,7 @@ final class TaskListViewModel: ObservableObject {
             tasks = try await service.fetchTasks()
         } catch {
             errorMessage = "Failed to load tasks"
+            showAlert = true
         }
         isLoading = false
     }

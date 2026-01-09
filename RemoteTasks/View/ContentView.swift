@@ -20,6 +20,11 @@ struct ContentView: View {
                 await viewModel.loadTasks()
             }
         }
+        . alert ( "Título" , isPresented: $viewModel.showAlert ) {
+            Button("Aceptar") {}
+        } message : {
+            Text("No hay datos")
+        }
     }
 }
 
